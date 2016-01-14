@@ -19,15 +19,40 @@ then have to say bye three times or you can't leave
 
 puts "Say hi to grandma."
 response = gets.chomp
-stuff_said = []
+bye_count = 0
 
-while(stuff_said.count("BYE") != 3)
+while(bye_count < 3)
 
     if(response != response.upcase)
         puts "WHADDAYA SAY, CHILD? I CANNA' HEAR YUH!"
     else
         puts "NO, NOT SINCE #{rand(1930..1950)}!"
     end
+
     response = gets.chomp
-    stuff_said.push(response)
+
+    if(response == "BYE")
+        bye_count = bye_count+1
+    else
+        bye_count = 0
+    end
 end
+
+#How to tell if any year between a given range is a leap year.
+
+puts "What is the year you'd like to start at?"
+year = gets.to_i
+puts "What is the year you'd like to end at?"
+end_year = gets.to_i
+
+while (year <= end_year)
+    if(year % 100 != 0 && year % 4 == 0)
+        puts "#{year}"
+    elsif(year % 400 == 0)
+        puts "#{year}"
+    end
+    year = year +1
+end
+
+
+
