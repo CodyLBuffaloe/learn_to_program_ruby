@@ -24,21 +24,41 @@ word2 = gets.chomp
 
 list2 = []
 
-sorted_list = []
+
 
 while(word2 != "")
 
-    list2.push(word2.downcase)
+    list2.push(word2)
 
     word2 = gets.chomp
 end
-list2.each{
-    |i|
-    a = 
-if(list2[i] > list2[a])
-    sorted_list.push(list2[0])
-else
-    sorted_list.push(list2[1])
+
+i = 0
+
+actual_length = list2.length - 2
+
+sorted = false
+
+while(sorted != true)
+   sorted = true
+
+    for i in 0..actual_length do
+
+        temp = ""
+
+        if(list2[i].downcase > list2[i+1].downcase)
+
+            sorted = false
+
+            temp = list2[i]
+
+            list2[i] = list2[i+1]
+
+            list2[i+1] = temp
+
+
+        end
+     end
+     puts "\n"
+     puts list2
 end
-}
-puts sorted_list
