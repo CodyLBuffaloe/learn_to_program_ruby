@@ -21,6 +21,18 @@ def englishNumber number
   # "write" is the part we are writing out right now.
   # write and left... get it?  :)
   left  = number
+  write = left/1000
+  left = left - write*1000
+
+  if write > 0
+    thousands = englishNumber write
+    numString = numString + thousands + ' thousand'
+
+    if left > 0
+        numString = numString + " "
+    end
+  end
+
   write = left/100          # How many hundreds left to write out?
   left  = left - write*100  # Subtract off those hundreds.
 
@@ -81,3 +93,7 @@ def englishNumber number
   # Now we just return "numString"...
   numString
 end
+
+puts englishNumber(100253)
+puts englishNumber(10253)
+puts englishNumber(1253)
