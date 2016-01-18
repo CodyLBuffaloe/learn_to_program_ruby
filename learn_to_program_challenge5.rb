@@ -1,4 +1,3 @@
-=begin
 #Takes an unlimited amount of strings, sorts them, repeats them back to you when you break the loop
 
 puts "Type a word and hit 'Enter'. Do this as many times as you like. When you're done, just hit 'Enter' a second time. "
@@ -15,7 +14,8 @@ while(word != "")
 end
 
 puts list.sort
-=end
+
+
 #The same program as above, without using .sort
 
 puts "Type a word, then hit 'Enter'. Do this as many times as you want. To quit, just hit 'Enter' a second time."
@@ -62,3 +62,7 @@ while(sorted != true)
      puts "\n"
      puts list2
 end
+
+#Same as the table of contents program from challenge3, only with everything in an array
+
+table_of_contents = ["Table of Contents", "Chapter 1: Numbers", "Page 1", "Chapter 2: Letters", "Page 72", "Chapter 3: Variables", "Page 118"]
