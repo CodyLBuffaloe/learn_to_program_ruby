@@ -1,3 +1,4 @@
+=begin
 def englishNumber number
   if number < 0  # No negative numbers.
     return 'Please enter a number that isn\'t negative.'
@@ -21,9 +22,9 @@ def englishNumber number
   # "write" is the part we are writing out right now.
   # write and left... get it?  :)
   left  = number
-
   write = left/1000000000000
   left = left - write*1000000000000
+
   if write > 0
     trillions = englishNumber write
     numString = numString + trillions + " trillion"
@@ -137,3 +138,65 @@ puts englishNumber(1003652)
 puts englishNumber(100253)
 puts englishNumber(10253)
 puts englishNumber(1253)
+
+=end
+
+def wedding_number num
+    if num < 0
+        puts "Please put a year"
+    end
+
+    wedding_date = " "
+
+    ones = ['one',     'two',       'three',    'four',     'five',
+                'six',     'seven',     'eight',    'nine']
+
+    tens = ['ten',     'twenty',    'thirty',   'forty',    'fifty',
+                          'sixty',   'seventy',   'eighty',   'ninety']
+
+    teens = ['eleven',  'twelve',    'thirteen', 'fourteen', 'fifteen',
+                           'sixteen', 'seventeen', 'eighteen', 'nineteen']
+
+    remainder = num
+
+    year = remainder/10
+    remainder = remainder - year*10
+
+    if year > 0
+        if remainder != 0
+            thousands = wedding_number year
+            wedding_date = wedding_date +  + " hundred and "
+        else
+           wedding_date = wedding_date + thousands + " thousand and "
+        end
+    end
+
+   year = remainder/10
+   remainder  = remainder - year*10
+
+   if year > 0
+     if ((year == 1) and (remainder > 0))
+
+       wedding_date = wedding_date + teens[year-1]
+       year = 0
+     else
+       wedding_date = wedding_date + tens[year-1]
+     end
+
+     if year > 0
+          wedding_date = wedding_date + '-'
+     end
+   end
+
+  year = remainder  # How many ones left to write out?
+  remainder  = 0     # Subtract off those ones.
+
+  if year > 0
+     wedding_date = wedding_date + ones[year-1]
+  end
+ wedding_date
+end
+
+
+puts wedding_number(2023)
+puts wedding_number(1974)
