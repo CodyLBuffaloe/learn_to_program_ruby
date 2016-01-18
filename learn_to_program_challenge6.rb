@@ -21,6 +21,42 @@ def englishNumber number
   # "write" is the part we are writing out right now.
   # write and left... get it?  :)
   left  = number
+
+  write = left/1000000000000
+  left = left - write*1000000000000
+  if write > 0
+    trillions = englishNumber write
+    numString = numString + trillions + " trillion"
+
+    if left > 0
+        numString = numString + " "
+    end
+
+  end
+
+  write = left/1000000000
+  left = left - write*1000000000
+  if write > 0
+    billions = englishNumber write
+    numString = numString + billions + " billion"
+
+    if left > 0
+        numString = numString + " "
+    end
+  end
+
+  write = left/1000000
+  left = left - write*1000000
+
+  if write > 0
+    millions = englishNumber write
+    numString = numString + millions + " million"
+
+    if left > 0
+        numString = numString + " "
+    end
+  end
+
   write = left/1000
   left = left - write*1000
 
@@ -94,6 +130,10 @@ def englishNumber number
   numString
 end
 
+puts englishNumber(15000000000000)
+puts englishNumber(4000000000)
+puts englishNumber(500300652)
+puts englishNumber(1003652)
 puts englishNumber(100253)
 puts englishNumber(10253)
 puts englishNumber(1253)
