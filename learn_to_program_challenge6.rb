@@ -1,4 +1,4 @@
-=begin
+
 def englishNumber number
   if number < 0  # No negative numbers.
     return 'Please enter a number that isn\'t negative.'
@@ -61,7 +61,7 @@ def englishNumber number
   write = left/1000
   left = left - write*1000
 
-  if write > 0
+  if ((write > 0) and ()
     thousands = englishNumber write
     numString = numString + thousands + ' thousand'
 
@@ -139,14 +139,13 @@ puts englishNumber(100253)
 puts englishNumber(10253)
 puts englishNumber(1253)
 
-=end
 
-def wedding_number num
-    if num < 0
+def weddingNumber input
+    if input < 0
         puts "Please put a year"
     end
 
-    wedding_date = " "
+    result = ""
 
     ones = ['one',     'two',       'three',    'four',     'five',
                 'six',     'seven',     'eight',    'nine']
@@ -156,47 +155,57 @@ def wedding_number num
 
     teens = ['eleven',  'twelve',    'thirteen', 'fourteen', 'fifteen',
                            'sixteen', 'seventeen', 'eighteen', 'nineteen']
+    year = input
+    single_digit = year/1000
+    year = year - single_digit*1000
 
-    remainder = num
+  if ((single_digit > 0) and (year < 100))
+    thousands = ones[single_digit-1]
+    result = result + thousands + ' thousand and '
+  elsif(year > 99)
 
-    year = remainder/10
-    remainder = remainder - year*10
-
-    if year > 0
-        if remainder != 0
-            thousands = wedding_number year
-            wedding_date = wedding_date +  + " hundred and "
-        else
-           wedding_date = wedding_date + thousands + " thousand and "
-        end
+     hundreds_place = year/100
+     year = year - hundreds_place*100
+    if((single_digit == 1))
+      result = teens[hundreds_place-1] + " hundred and "
+    elsif(single_digit > 1)
+        result = tens[single_digit-1]+ "-" + ones[hundreds_place-1] + " hundred and "
     end
 
-   year = remainder/10
-   remainder  = remainder - year*10
-
-   if year > 0
-     if ((year == 1) and (remainder > 0))
-
-       wedding_date = wedding_date + teens[year-1]
-       year = 0
-     else
-       wedding_date = wedding_date + tens[year-1]
-     end
-
-     if year > 0
-          wedding_date = wedding_date + '-'
-     end
-   end
-
-  year = remainder  # How many ones left to write out?
-  remainder  = 0     # Subtract off those ones.
-
-  if year > 0
-     wedding_date = wedding_date + ones[year-1]
+    if year > 0
+          result = result + ' '
+    end
   end
- wedding_date
+
+    single_digit = year/10
+    year  = year - single_digit*10
+
+  if single_digit > 0
+    if ((single_digit == 1) and (year > 0))
+      result = result + teens[year-1]
+      left = 0
+    else
+      result = result + tens[single_digit-1]
+    end
+
+    if year > 0
+       result = result + '-'
+    end
+  end
+
+  single_digit = year
+  year  = 0
+
+  if single_digit > 0
+    result = result + ones[single_digit-1]
+
+  end
+
+  result
+
+
 end
 
-
-puts wedding_number(2023)
-puts wedding_number(1974)
+puts weddingNumber(1974)
+puts weddingNumber(2974)
+puts weddingNumber(2023)
