@@ -61,7 +61,7 @@ def englishNumber number
   write = left/1000
   left = left - write*1000
 
-  if ((write > 0) and ()
+  if (write > 0)
     thousands = englishNumber write
     numString = numString + thousands + ' thousand'
 
@@ -130,7 +130,7 @@ def englishNumber number
   # Now we just return "numString"...
   numString
 end
-
+=begin
 puts englishNumber(15000000000000)
 puts englishNumber(4000000000)
 puts englishNumber(500300652)
@@ -209,3 +209,16 @@ end
 puts weddingNumber(1974)
 puts weddingNumber(2974)
 puts weddingNumber(2023)
+=end
+bottles_of_beer = 9999
+
+while(bottles_of_beer > 0)
+
+    if(bottles_of_beer == 1)
+        puts englishNumber(bottles_of_beer) + " bottle of beer on the waaaaaaallll! Take it down, pass it around, no more bottles of beer on the wall!"
+    else
+        puts englishNumber(bottles_of_beer) + " bottles of beer on the wall!, "+ englishNumber(bottles_of_beer) + " bottles or beer, take one down, pass it around, " + (englishNumber(bottles_of_beer - 1)) + " bottles of beer on the wall! "
+    end
+
+    bottles_of_beer = bottles_of_beer -1
+end
