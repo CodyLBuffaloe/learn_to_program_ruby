@@ -55,6 +55,32 @@ class Dragon
     end
   end
 
+  def methodCall input
+    case input
+
+    when "feed"
+        feed
+
+    when "walk"
+        walk
+
+    when "bed"
+        putToBed
+
+    when "rock"
+        rock
+    when "toss"
+        toss
+    when "exit"
+        exit
+
+    else
+        puts "#{@name} did not understand your command, please try another."
+    end
+
+
+  end
+
   private
 
   # "private" means that the methods defined here are
@@ -107,5 +133,21 @@ class Dragon
       puts @name + ' does the potty dance...'
     end
   end
+
+end
+
+puts "What would you like to name your new dragon?"
+
+name = gets.chomp
+
+pet = Dragon.new name
+input = ''
+
+while(input != "exit")
+    puts "What would you like to do with your new dragon? You can 'feed' him, 'walk' him, 'rock' him, 'toss' him, or put him to 'bed'. Type 'exit' to leave the program."
+
+    input = gets.chomp
+
+    pet.methodCall input
 
 end
